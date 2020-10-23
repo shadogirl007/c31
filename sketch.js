@@ -1,3 +1,47 @@
+//Number
+
+var num = 100;
+console.log(num);
+
+//String
+var str = "This is a string";
+console.log(str);
+
+//Boolean
+var bool = true;
+console.log(bool);
+
+//Undefined
+var object;
+console.log(object);
+
+//Reassigning a variable
+//Null
+object = null;
+console.log(object);
+
+//Array containing same data type
+var arr1 = [1, 2, 3, 4, 5];
+console.log(arr1);
+console.log(arr1[4]);
+
+//Array containing different data types
+var arr2 = [100, "Dhriti", false];
+console.log(arr2);
+console.log(arr2[1]);
+
+//Array containing arrays
+var arr3 = [[1, 2], [2,3], [3, 4], [4,5]];
+console.log(arr3);
+console.log(arr3[2]);
+console.log(arr3[2][0]);
+
+arr3.push("Srishti");
+console.log(arr3);
+
+arr3.pop();
+console.log(arr3);
+
 const Engine = Matter.Engine;
 const World= Matter.World;
 const Bodies = Matter.Bodies;
@@ -7,7 +51,7 @@ var engine, world;
 var box1, pig1,pig3;
 var backgroundImg,platform;
 var bird, slingshot;
-
+var gameState= "onsling";
 
 function preload() {
     backgroundImg = loadImage("sprites/bg.png");
@@ -69,16 +113,42 @@ function draw(){
 }
 
 function mouseDragged(){
-    Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    if(gameState!=="launched"){       //NOT operator --> !
+        Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    }
 }
 
 
 function mouseReleased(){
     slingshot.fly();
+    gameState="launched"
 }
+
 
 function keyPressed(){
     if(keyCode === 32){
-        slingshot.attach(bird.body);
+        //slingshot.attach(bird.body);
     }
 }
+
+/*  
+To store data ==> Variables
+
+Data types:
+
+1. Number
+2. String
+3. Null
+4. Boolean - true/false
+5. Undefined
+
+To store multiple variables/values --> DATA STRUCTURE
+
+ARRAY
+- List of items (variables)
+- contains different or same data types
+- created inside []
+- Items contained are called elements
+- Elements are separated by a comma
+*/
+   
